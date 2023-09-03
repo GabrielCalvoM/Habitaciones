@@ -21,7 +21,15 @@ public class Habitacion {
 	}
 	
 	public void limpiar() {
-		this.suciedad = true;
+		this.suciedad = false;
+	}
+	
+	public void destapar() {
+		this.desague = false;
+	}
+	
+	public void secar() {
+		this.inundación = false;
 	}
 	
 	public void iluminar(Luz fuente, iluminacion estado) {
