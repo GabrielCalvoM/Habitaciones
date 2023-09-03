@@ -13,5 +13,9 @@ public class Ventana {
 			this.estado = estado;
 		}
 	}
+	
+	public state compartirEstado() {
+		return this.estado;
+	}
 
 }

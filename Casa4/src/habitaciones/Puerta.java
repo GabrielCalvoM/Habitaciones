@@ -21,11 +21,29 @@ public class Puerta {
 		
 	}
 	
+	public boolean enlazado() {
+		if (this.h2 == null) {
+			return false;
+		}
+		
+		else {
+			return true;
+		}
+	}
+	
+	public Habitacion conectividad() {
+		return this.h2.h1;
+	}
+	
 	public void cambiarEstado(state estado) {
 		if (this.estado != estado) {
 			this.estado = estado;
 			this.h2.estado = estado;
 		}
+	}
+	
+	public state compartirEstado() {
+		return this.estado;
 	}
 
 }

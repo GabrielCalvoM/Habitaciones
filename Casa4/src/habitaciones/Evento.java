@@ -1,5 +1,5 @@
 package habitaciones;
 
 public enum Evento {
-	taparTubería, inundar, ensuciar
+	taparTubería, inundar, ensuciar, cortarLuz, cortarAgua
 }

@@ -1,5 +1,6 @@
 package habitaciones;
 
 public enum Interaccion {
-	abrirPuerta, cerrarPuerta, abrirVentana, cerrarVentana, encenderLuz, apagarLuz
+	abrirPuerta, cerrarPuerta, abrirVentana, cerrarVentana, encenderLuz, apagarLuz, 
+	abrirLlave, cerrarLlave
 }
