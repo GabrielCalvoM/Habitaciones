@@ -1,17 +1,18 @@
 package habitaciones;
 
 public class Cochera extends Habitacion {
-	Luz bombillo;
-	Puerta puerta;
-	Ventana ventana;
 	private int carro; 
 	 
-	 public Cochera(int pcarro,  Luz pluz, Puerta ppuerta, Ventana pventana) {
-		 luz = pluz;
-		 puerta = ppuerta;
-		 ventana = pventana;
+	 public Cochera(int pcarro) {
+		 super(80);
 		 carro = pcarro;
 	 }
-	public bool detectarCarro(); 
+	public Boolean detectarCarro() {
+		if (this.carro > 0) {
+			return true;
+		}
+		
+		return false;
+	}
 
 }

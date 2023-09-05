@@ -1,21 +1,23 @@
 package habitaciones;
 
-public class Bath  extends Habitacion {
-	Luz bombillo;
-	Puerta puerta;
-	Ventana ventana; 
-	private int innodoro;
-	private int ducha;
-	private int lavaManos;
+public class Baño  extends Habitacion {
+	private Boolean innodoro = false;
+	private Boolean ducha = false;
+	private Boolean lavaManos = false;
 	
-	public Bath(int pinnodoro, int pducha, int plavaManos, Luz pluz, Puerta ppuerta, Ventana pventana) {
-		 luz = pluz;
-		 puerta = ppuerta;
-		 ventana = pventana;
-		 innodoro = pinnodoro;    
-		 ducha = pducha;  
-		 lavaManos = plavaManos; 
+	public Baño(Boolean pinnodoro, Boolean pducha, Boolean plavaManos) {
+		super(40);
+		innodoro = pinnodoro;    
+		ducha = pducha;  
+		lavaManos = plavaManos; 
 	}
 	
+	public void abrirLlave(Boolean objeto) {
+		objeto = true;
+	}
+	
+	public void cerrarLlave(Boolean objeto) {
+		objeto = false;
+	}
 	
 }

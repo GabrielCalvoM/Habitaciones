@@ -18,6 +18,18 @@ public class Habitacion {
 		this.tamaño = tam;
 	}
 	
+	public void agregarPuerta(Puerta objeto) {
+		this.puertas.add(objeto);
+	}
+	
+	public void agregarVentana(Ventana objeto) {
+		this.ventanas.add(objeto);
+	}
+
+	public void agregarLuz(Luz objeto) {
+		this.luces.add(objeto);
+	}
+
 	public void enlazar(Habitacion habitacion2) {
 		if (puertas.isEmpty() == false) {
 			Puerta h1 = puertas.get(0);

@@ -1,3 +1,11 @@
 {
-    "6:00": {"Cuarto": "Cerrar"}
+    "6:00": {"Cuarto": ["abrirPuerta", "sala"],
+    		 "Baño": ["abrirPuerta", "cocina"]},
+    
+    "7:00": {"Cocina": ["abrirVentana", 1]},
+    
+    "9:00": {"Cuarto": "ensuciar"},
+    
+    "12:00": {"Sala": "inundar"}
+    
 }
