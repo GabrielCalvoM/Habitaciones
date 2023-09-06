@@ -1,11 +1,11 @@
 package habitaciones;
 
-public class Baño  extends Habitacion {
+public class Baño extends Habitacion {
 	private String nombre = "Baño";
 	private Boolean innodoro = false;
 	private Boolean ducha = false;
 	private Boolean lavaManos = false;
-	
+
 	public Baño(String nom) {
 		super(40); 
 		nombre = nom;

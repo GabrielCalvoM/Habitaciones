@@ -63,6 +63,8 @@ public class PlanTest extends Thread {
 	}
 	
 	public void run() {
+		contador.setTime(fecha);
+		
 		for (Test test : listatest) {
 			if (test.getHora() == hora) {
 				if (test.getInteraccion() == null) {
