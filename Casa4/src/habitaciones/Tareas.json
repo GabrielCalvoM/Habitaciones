@@ -4,8 +4,12 @@
     
     "7:00": {"Cocina": ["abrirVentana", 1]},
     
+    "8:00": {"Cochera": ["abrirPuerta", "sala"]},
+    
     "9:00": {"Cuarto": "ensuciar"},
     
-    "12:00": {"Sala": "inundar"}
+    "12:00": {"Sala": "inundar"},
+    
+    "14:00"
     
 }

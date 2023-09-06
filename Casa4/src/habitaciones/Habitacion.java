@@ -1,69 +1,31 @@
 package habitaciones;
 
-import java.util.ArrayList;
-
 public class Habitacion {
 	
-	private ArrayList<Puerta> puertas;
-	private ArrayList<Ventana> ventanas;
-	private ArrayList<Luz> luces;
+	private Puerta puerta = new Puerta(this);
+	private Ventana ventana = new Ventana();
+	private Luz luz = new Luz();
 	private int tamaño;
 	private Afectacion suciedad = Afectacion.noAfecta;
 	private Afectacion desague = Afectacion.noAfecta;
 	private Afectacion inundacion = Afectacion.noAfecta;
 	private Afectacion agua = Afectacion.noAfecta;
-	private Afectacion luz = Afectacion.noAfecta;
+	private Afectacion electricidad = Afectacion.noAfecta;
 	
 	public Habitacion(int tam) {
 		this.tamaño = tam;
 	}
 	
-	public void agregarPuerta(Puerta objeto) {
-		this.puertas.add(objeto);
+	public void usarPuerta(state estado) {
+		this.puerta.cambiarEstado(estado);
 	}
 	
-	public void agregarVentana(Ventana objeto) {
-		this.ventanas.add(objeto);
+	public void usarVentana(state estado) {
+		this.ventana.cambiarEstado(estado);
 	}
 
-	public void agregarLuz(Luz objeto) {
-		this.luces.add(objeto);
-	}
-
-	public void enlazar(Habitacion habitacion2) {
-		if (puertas.isEmpty() == false) {
-			Puerta h1 = puertas.get(0);
-			int largo = puertas.size();
-			int i = 1;
-			
-			while ((h1.enlazado() == false) && (i < largo)) {
-				ArrayList<Puerta> puertas2 = habitacion2.puertas;
-			
-				if (puertas2.isEmpty() == false) {
-					Puerta h2 = puertas2.get(0);
-					int largo2 = puertas2.size();
-					int j = 1;
-					
-					while ((h2.enlazado() == false) && (j < largo2)) {
-						h1.enlace(h2);
-						h2 = puertas.get(j);
-						j += 1;
-					}
-				}
-			}
-		}
-	}
-	
-	public void usarPuerta(Puerta objeto, state estado) {
-		objeto.cambiarEstado(estado);
-	}
-	
-	public void usarVentana(Ventana objeto, state estado) {
-		objeto.cambiarEstado(estado);
-	}
-
-	public void iluminar(Luz fuente, iluminacion estado) {
-		fuente.cambiarEstado(estado);
+	public void iluminar(iluminacion estado) {
+		this.luz.cambiarEstado(estado);
 	}
 	
 	public void solucionProblemas() {
@@ -79,11 +41,9 @@ public class Habitacion {
 			this.inundacion = Afectacion.noAfecta;
 		}
 
-		if (this.luz == Afectacion.afecta) {
-			this.luz = Afectacion.noAfecta;
-			for (Luz luz : luces) {
-				luz.cambiarEstado(iluminacion.encendido);
-			}
+		if (this.electricidad == Afectacion.afecta) {
+			this.electricidad = Afectacion.noAfecta;
+			luz.cambiarEstado(iluminacion.encendido);
 		}
 
 		if (this.agua == Afectacion.afecta) {
@@ -105,10 +65,6 @@ public class Habitacion {
 		else if (cualidad == Cualidad.inundacion) {
 			if (this.flujo(this)) {
 				cambio = this.inundacion;
-				for (Puerta puerta : puertas) {
-					Habitacion h2 = puerta.conectividad();
-					h2.afectarEvento(Cualidad.inundacion);
-				}
 			}
 		}
 		
@@ -117,39 +73,25 @@ public class Habitacion {
 		}
 		
 		else if (cualidad == Cualidad.luz) {
-			cambio = this.luz;
-			for (Luz luz : luces) {
-				luz.cambiarEstado(iluminacion.apagado);
-			}
+			cambio = this.electricidad;
+			luz.cambiarEstado(iluminacion.apagado);
 		}
 		
 		if (cambio == Afectacion.noAfecta) {
 			cambio = Afectacion.afecta;
 		}
+		
+		this.solucionProblemas();
 	}
 	
 	public boolean flujo(Habitacion h1) {
-		for (Ventana ventana : ventanas) {
-			if (ventana.compartirEstado() == state.abierto) {
-				return true;
-			}
+		if (ventana.compartirEstado() == state.abierto) {
+			return true;
 		}
 		
-		for (Puerta puerta : puertas) {
-			if (puerta.enlazado()) {
-				if (puerta.compartirEstado() == state.abierto) {
-					Habitacion h2 = puerta.conectividad();
-					if (h2 != h1) {
-						if (h2 == null) {
-							return true;
-						}
-						
-						else {
-							h2.flujo(this);
-						}
-					}
-				}
-			}
+		
+		if (puerta.compartirEstado() == state.abierto) {
+			return true;
 		}
 		
 		return false;
