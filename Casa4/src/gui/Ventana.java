@@ -6,7 +6,7 @@ import java.awt.*;
 public class Window extends JFrame {
 	private JTextArea textArea;
 	
-	public RodriWindow() {
+	public Window() {
 		setTitle("Habitaciones casa #4");
         setSize(500, 600); // Set the desired size
         setResizable(false); // Disable frame resizing

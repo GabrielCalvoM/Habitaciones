@@ -1,6 +1,7 @@
 package habitaciones;
 
 public class Cuarto extends Habitacion {
+	private String nombre = "Baño";
 	private int television;
 	private int cama;
 	
@@ -8,6 +9,7 @@ public class Cuarto extends Habitacion {
 		super(60);
 		television = ptelevision; 
 		cama = pcama;  
+		nombre = nom;
 	}
 	
 	public void tenderCama() {
